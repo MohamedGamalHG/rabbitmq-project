@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: rabbitmq-project
+  rabbitmq:
+    host: localhost
+    port: 5672  # this should be 5672 not 15672
+    username: guest
+    password: guest
+    virtual-host: /
+  main:
+    allow-circular-references: true # to make break for circular dependency that come from PostConsturct
+
+rabbitmq:
+  queue1: direct-queue1
+  queue2: direct-queue2
+  queue3: direct-queue3
+  exchange: direct-exchange
+  binding1 : direct-bi1
+  binding2 : direct-bi2
+  binding3 : direct-bi3
+  fan-queue1: fan-queue1
+  fan-queue2: fan-queue2
+  fan-queue3: fan-queue3
+  fan-exchange: fan-exchange
+
