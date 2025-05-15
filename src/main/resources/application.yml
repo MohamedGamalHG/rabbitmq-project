@@ -22,4 +22,10 @@ rabbitmq:
   fan-queue2: fan-queue2
   fan-queue3: fan-queue3
   fan-exchange: fan-exchange
-
+  topic-queue1: topic-queue1
+  topic-queue2: topic-queue2
+  topic-queue3: topic-queue3
+  topic-binding1: "*.q1.*"
+  topic-binding2: "#.q.q"
+  topic-binding3: "*.#.a"
+  topic-exchange: topic-exchange
