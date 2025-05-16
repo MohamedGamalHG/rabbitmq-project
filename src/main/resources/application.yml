@@ -29,3 +29,7 @@ rabbitmq:
   topic-binding2: "#.q.q"
   topic-binding3: "*.#.a"
   topic-exchange: topic-exchange
+  header-queue1:   header-queue1
+  header-queue2:   header-queue2
+  header-queue3:   header-queue3
+  header-exchange: header-exchange
