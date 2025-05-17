@@ -16,12 +16,15 @@ public class ListenerConsumer {
     *   @RabbitListener => one the Important thing in the listener is when mamic that function fail like we make
     *                       blow that we throw new RunTimeException() then it will not consume the message
     *                       but return it again to the queue because the method is fail to complete successfully
+    *                       update: this will not consume the message but reconsume again and again forever so
+    *                               will hang the app so, we update now in the FanOutExchangeConfig Class
     *
     * */
     @RabbitListener(queues =
             {       "${rabbitmq.fan-queue1}",
                     "${rabbitmq.fan-queue2}",
-                    "${rabbitmq.fan-queue3}"}
+//                    "${rabbitmq.fan-queue3}"
+            }
             ,containerFactory = "simpleRabbitListenerContainerFactory")
     public void receiveMessage(Message message){
         System.out.println(message.toString());

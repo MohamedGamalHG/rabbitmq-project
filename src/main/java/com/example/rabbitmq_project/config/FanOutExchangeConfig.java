@@ -17,6 +17,9 @@ public class FanOutExchangeConfig {
     private String queue2;
     @Value("${rabbitmq.fan-queue3}")
     private String queue3;
+    @Value("${rabbitmq.dead-letter-fan-queue}")
+
+    private String deadLetterQueue;
 
     @Value("${rabbitmq.fan-exchange}")
     private String exchange;
@@ -24,7 +27,20 @@ public class FanOutExchangeConfig {
 
     @Bean
     Queue createFanQueue1(){
-        return new Queue(queue1,true);
+
+        // it should delete the queue from rabbitMq UI and then create the new Queue with new Data
+        return QueueBuilder.durable(queue1)
+                // this like default exchange i will push message on it so it put it empty string
+                .deadLetterExchange("") // default is ""
+                // this the queue that i will push on it in case it fail happen
+                .deadLetterRoutingKey(deadLetterQueue)
+                .build();
+
+        //return new Queue(queue1,true);
+    }
+    @Bean
+    Queue deadLetterFanOutQueue(){
+        return new Queue(deadLetterQueue,true);
     }
 
     @Bean

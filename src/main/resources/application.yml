@@ -21,6 +21,7 @@ rabbitmq:
   fan-queue1: fan-queue1
   fan-queue2: fan-queue2
   fan-queue3: fan-queue3
+  dead-letter-fan-queue: dead-later-fan-queue
   fan-exchange: fan-exchange
   topic-queue1: topic-queue1
   topic-queue2: topic-queue2
